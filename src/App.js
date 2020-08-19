@@ -1,5 +1,6 @@
 import React from "react";
 import Accordion from "./components/Accordion";
+import WikiSearch from "./components/WikiSearch";
 
 const items = [
   {
@@ -20,7 +21,7 @@ export default () => {
   return (
     <div>
       <br></br>
-      <Accordion items={items} />
+      <WikiSearch />
     </div>
   );
 };
