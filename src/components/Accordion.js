@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Accordion = (props) => {
+  const [indexActive, setindexActive] = useState(null);
+
   const onClickItem = (index) => {
-    props.getIndex(index);
-    //console.log("TESTTTTTT" + index);
+    setindexActive(index);
   };
 
   const renderedItems = props.items.map((item, index) => {
+    let activeStyle = indexActive === index ? "active" : "";
+
     return (
       <React.Fragment key={item.title}>
         <div
-          className="title active"
+          className={`title ${activeStyle}`}
           onClick={() => {
             onClickItem(index);
           }}
@@ -18,7 +21,7 @@ const Accordion = (props) => {
           <i className="dropdown icon"> </i>
           {item.title}
         </div>
-        <div className="content active">
+        <div className={`content ${activeStyle}`}>
           <p>{item.content}</p>
         </div>
       </React.Fragment>
