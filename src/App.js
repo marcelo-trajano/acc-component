@@ -1,27 +1,45 @@
-import React from "react";
-import Accordion from "./components/Accordion";
-import WikiSearch from "./components/WikiSearch";
+import React, { useState } from "react";
+//import Accordion from "./components/Accordion";
+//import WikiSearch from "./components/WikiSearch";
+import Dropdown from "./components/Dropdown";
 
-const items = [
+// const items = [
+//   {
+//     title: "What is React?",
+//     content: "React is a front end JavaScript Library!",
+//   },
+//   {
+//     title: "Why use React?",
+//     content: "React is the most used front end js library",
+//   },
+//   {
+//     title: "How do you use React?",
+//     content: "You use React by create components",
+//   },
+// ];
+
+const options = [
   {
-    title: "What is React?",
-    content: "React is a front end JavaScript Library!",
+    value: "red",
+    label: "Color Red",
   },
   {
-    title: "Why use React?",
-    content: "React is the most used front end js library",
+    value: "green",
+    label: "Color Green",
   },
   {
-    title: "How do you use React?",
-    content: "You use React by create components",
+    value: "blue",
+    label: "Color Blue",
   },
 ];
 
 export default () => {
+  const [selected, setSelected] = useState(null);
+
   return (
     <div>
-      <br></br>
-      <WikiSearch />
+      <br />
+      <Dropdown selected={selected} options={options} />
     </div>
   );
 };
