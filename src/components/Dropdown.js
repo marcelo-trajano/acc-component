@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default (props) => {
+  const [open, setOpen] = useState(false);
+
   const options = props.options.map((item) => {
+    if (item.value === props.selected.value) {
+      return null;
+    }
+
     return (
       <div
         key={item.value}
@@ -19,10 +25,17 @@ export default (props) => {
     <div className="ui form">
       <div className="field">
         <label className="label">Select a color</label>
-        <div className="ui selection dropdown visible active">
+        <div
+          onClick={() => {
+            setOpen(!open);
+          }}
+          className={`ui selection dropdown ${open ? "visible active" : ""}`}
+        >
           <i className="dropdown icon"></i>
           <div className="text">{props.selected.label}</div>
-          <div className="menu visible transition">{options}</div>
+          <div className={`menu ${open ? "visible transition" : ""}`}>
+            {options}
+          </div>
         </div>
       </div>
     </div>
