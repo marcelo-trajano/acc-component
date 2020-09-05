@@ -1,7 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export default (props) => {
   const [open, setOpen] = useState(false);
+  const ref = useRef();
+
+  useEffect(() => {
+    document.body.addEventListener("click", (event) => {
+      console.log(event.target);
+      if (ref.current.contains(event.target)) {
+        return;
+      }
+      setOpen(false);
+    });
+  }, []);
 
   const options = props.options.map((item) => {
     if (item.value === props.selected.value) {
@@ -22,7 +33,7 @@ export default (props) => {
   });
 
   return (
-    <div className="ui form">
+    <div ref={ref} className="ui form">
       <div className="field">
         <label className="label">Select a color</label>
         <div
