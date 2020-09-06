@@ -35,7 +35,7 @@ export default (props) => {
   return (
     <div ref={ref} className="ui form">
       <div className="field">
-        <label className="label">Select a color</label>
+        <label className="label">{props.label}</label>
         <div
           onClick={() => {
             setOpen(!open);
