@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dropdown from "./Dropdown";
+import Translator from "./Translator";
+import axios from "axios";
 
 const options = [
   {
@@ -17,14 +19,22 @@ const options = [
 ];
 
 export default () => {
-  const [language, setLanguage] = useState(options[0]);
+  const [language, setLanguage] = useState(options[1]);
+  const [text, setText] = useState("");
+
   return (
     <div>
       <div className="ui form">
         <div className="field">
           <label>type text here:</label>
           <div className="ui input">
-            <input type="text" placeholder="Translate..." />
+            <input
+              value={text}
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
+              placeholder="Translate..."
+            />
           </div>
         </div>
       </div>
@@ -34,6 +44,7 @@ export default () => {
         onSelectChange={setLanguage}
         options={options}
       />
+      <Translator text={text} language={language} />
     </div>
   );
 };
