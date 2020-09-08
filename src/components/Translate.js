@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from "./Dropdown";
 import Translator from "./Translator";
-import axios from "axios";
 
 const options = [
   {
