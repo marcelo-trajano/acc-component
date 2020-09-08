@@ -5,13 +5,19 @@ export default (props) => {
   const ref = useRef();
 
   useEffect(() => {
-    document.body.addEventListener("click", (event) => {
-      console.log(event.target);
+    const onBodyClick = (event) => {
       if (ref.current.contains(event.target)) {
         return;
       }
+
       setOpen(false);
-    });
+    };
+
+    document.body.addEventListener("click", onBodyClick);
+
+    return () => {
+      document.body.removeEventListener("click", onBodyClick);
+    };
   }, []);
 
   const options = props.options.map((item) => {

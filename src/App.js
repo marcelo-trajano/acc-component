@@ -3,9 +3,8 @@ import Accordion from "./components/Accordion";
 import Route from "./components/Route";
 import WikiSearch from "./components/WikiSearch";
 import Dropdown from "./components/Dropdown";
-//import Dropdown from "./components/Translate";
 import Translate from "./components/Translate";
-import { within } from "@testing-library/react";
+import Header from "./components/Header";
 
 const items = [
   {
@@ -42,24 +41,26 @@ export default () => {
 
   return (
     <div>
-      <br />
-      <Route path="/">
-        <Accordion items={items}></Accordion>
-      </Route>
-      <Route path="/list">
-        <WikiSearch></WikiSearch>
-      </Route>
-      <Route path="/dropdown">
-        <Dropdown
-          label="Select color:"
-          selected={selected}
-          onSelectChange={setSelected}
-          options={options}
-        ></Dropdown>
-      </Route>
-      <Route path="/translate">
-        <Translate items={items}></Translate>
-      </Route>
+      <Header />
+      <div className="ui container">
+        <Route path="/">
+          <Accordion items={items}></Accordion>
+        </Route>
+        <Route path="/list">
+          <WikiSearch></WikiSearch>
+        </Route>
+        <Route path="/dropdown">
+          <Dropdown
+            label="Select color:"
+            selected={selected}
+            onSelectChange={setSelected}
+            options={options}
+          ></Dropdown>
+        </Route>
+        <Route path="/translate">
+          <Translate items={items}></Translate>
+        </Route>
+      </div>
     </div>
   );
 };

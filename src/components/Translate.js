@@ -37,12 +37,14 @@ export default () => {
           </div>
         </div>
       </div>
+      <br />
       <Dropdown
         label="Select a language:"
         selected={language}
         onSelectChange={setLanguage}
         options={options}
       />
+      <br />
       <Translator text={text} language={language} />
     </div>
   );
